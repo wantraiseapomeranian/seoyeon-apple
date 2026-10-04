@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "seoyeon-number-garden",
+  "name": "seoyeon-apple",
   "main": "worker/index.ts",
   "compatibility_date": "2026-09-01",
   "assets": {
@@ -12,7 +12,7 @@
     {
       "binding": "DB",
       "database_name": "seoyeon-game",
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "6959e679-de97-4eb8-a7cf-0e26c0b7f3ae",
       "migrations_dir": "migrations",
     },
   ],
