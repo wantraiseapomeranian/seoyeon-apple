@@ -4,7 +4,7 @@
 
 2026-09-15 명세 v0.1 기반. React/TypeScript/Vite, Workers/Hono/D1, 정적 사진 자산.
 기존 프로젝트는 Cloudflare 사용 조건만 공유하며 별도 게임으로 구현한다.
-원격 리소스 생성, 배포, commit/push는 이번 작업에 포함하지 않는다.
+최초 구현 범위에는 원격 배포가 없었으며, 2026-10-04 사용자 승인으로 Cloudflare 배포와 필요한 설정 변경·commit/push를 진행했다.
 
 ## 완료
 
@@ -15,13 +15,21 @@
 - P4: 서버 로그 재생, 세션 소유권/만료, 원자적 제출, 재시도 응답, IP/플레이어 제한, 검토 플래그.
 - P5: 전체/주간/오늘 랭킹, TOP 5, 순위/상위 %, 개인 최고점, 동점 정책.
 - 개발 문서, SQL 마이그레이션, 빌드/테스트/로컬 실행 스크립트.
+- Cloudflare Worker `seoyeon-apple`, D1 `seoyeon-game` 연결 및 초기 마이그레이션 적용, 기본 도메인 배포.
 
 ## 남은 제품 작업
 
 - 실제 성장 사진 5장 선정/연결. 제공 경로는 확인 당시 비어 있음.
 - P6: 실제 사용자 20~50판 이상으로 유효 조합 수/단계 점수 컷/봇 플래그 임계값 실측.
 - 운영 닉네임 필터 목록 보강 및 검토 플래그 운영 절차 확정.
-- 배포 요청 시 실제 Cloudflare 계정 연결, D1 생성, 마이그레이션, 서브도메인 연결.
+
+## 배포 경로
+
+- 운영 주소: https://seoyeon-apple.seoyeon-archive.workers.dev/
+- GitHub 저장소: `wantraiseapomeranian/seoyeon-apple`, 운영 브랜치: `codex/initial-game`.
+- Cloudflare Workers and Pages GitHub 앱에 이 저장소 접근을 허용했으며, 운영 브랜치 push를 Workers Builds가 자동으로 빌드·배포한다.
+- 빌드 명령: `npm run build`, 배포 명령: `npx wrangler deploy`, 루트 경로: `/`, 감시 경로: `*`.
+- 배포 결과는 Workers Builds의 커밋 SHA 및 성공 상태와 GitHub check에서 확인한다.
 
 ## 검증 기록
 
